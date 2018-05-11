@@ -1,0 +1,20 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "idSession",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "idCollaborator",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20180511034019",
+    "entityTableName": "link_auth",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

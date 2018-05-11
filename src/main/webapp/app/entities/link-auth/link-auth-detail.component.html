@@ -1,0 +1,30 @@
+
+<div *ngIf="linkAuth">
+    <h2><span>Link Auth</span> {{linkAuth.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Id Session</span></dt>
+        <dd>
+            <span>{{linkAuth.idSession}}</span>
+        </dd>
+        <dt><span>Id Collaborator</span></dt>
+        <dd>
+            <span>{{linkAuth.idCollaborator}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'link-auth/'+ linkAuth.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

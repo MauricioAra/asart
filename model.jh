@@ -1,0 +1,42 @@
+entity LinkAuth{
+	idSession Long,
+    idCollaborator Long
+}
+
+entity Collaborator{
+	identification String,
+    name String,
+    firstName String,
+    lastName String,
+    birthDate String,
+    gender String,
+    cellPhone String,
+    address String,
+    status String
+}
+
+entity Project{
+	name String,
+    description String,
+    totalHours String,
+    startDate String,
+    endDate String,
+    status String
+}
+
+entity LogWork{
+	name String,
+	description String,
+    hour Integer,
+    minute Integer,
+    date String,
+    status String
+}
+
+relationship OneToMany {
+  Collaborator{project} to Project{collaborator(name)},
+  Project{logWork} to LogWork{project(name)}
+}
+
+dto * with mapstruct
+service all with serviceImpl
