@@ -84,4 +84,14 @@ public class LogWorkServiceImpl implements LogWorkService {
         log.debug("Request to delete LogWork : {}", id);
         logWorkRepository.delete(id);
     }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<LogWorkDTO> findAllByProjectId(Long id) {
+        log.debug("Request to get all LogWorks");
+        return logWorkRepository.findAllByProjectId(id).stream()
+            .map(logWorkMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
 }

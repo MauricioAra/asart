@@ -115,4 +115,12 @@ public class LogWorkResource {
         logWorkService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/log-works-by-project/{id}")
+    @Timed
+    public ResponseEntity<List<LogWorkDTO>> getLogWorkByProjectId(@PathVariable Long id) {
+        log.debug("REST request to get LogWork : {}", id);
+        List<LogWorkDTO> logWorkDTO = logWorkService.findAllByProjectId(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(logWorkDTO));
+    }
 }

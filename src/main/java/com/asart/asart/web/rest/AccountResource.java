@@ -1,5 +1,9 @@
 package com.asart.asart.web.rest;
 
+import com.asart.asart.service.CollaboratorService;
+import com.asart.asart.service.LinkAuthService;
+import com.asart.asart.service.dto.CollaboratorDTO;
+import com.asart.asart.service.dto.LinkAuthDTO;
 import com.codahale.metrics.annotation.Timed;
 
 import com.asart.asart.domain.User;
@@ -37,11 +41,17 @@ public class AccountResource {
 
     private final MailService mailService;
 
-    public AccountResource(UserRepository userRepository, UserService userService, MailService mailService) {
+    private final CollaboratorService collaboratorService;
+
+    private final LinkAuthService linkAuthService;
+
+    public AccountResource(UserRepository userRepository, UserService userService, MailService mailService, CollaboratorService collaboratorService, LinkAuthService linkAuthService) {
 
         this.userRepository = userRepository;
         this.userService = userService;
         this.mailService = mailService;
+        this.collaboratorService = collaboratorService;
+        this.linkAuthService = linkAuthService;
     }
 
     /**
@@ -62,6 +72,25 @@ public class AccountResource {
         userRepository.findOneByLogin(managedUserVM.getLogin().toLowerCase()).ifPresent(u -> {throw new LoginAlreadyUsedException();});
         userRepository.findOneByEmailIgnoreCase(managedUserVM.getEmail()).ifPresent(u -> {throw new EmailAlreadyUsedException();});
         User user = userService.registerUser(managedUserVM, managedUserVM.getPassword());
+
+        CollaboratorDTO collaboratorDTO = new CollaboratorDTO();
+        collaboratorDTO.setIdentification(managedUserVM.getIdentification());
+        collaboratorDTO.setName(managedUserVM.getName());
+        collaboratorDTO.setFirstName(managedUserVM.getFirstName());
+        collaboratorDTO.setLastName(managedUserVM.getLastName());
+        collaboratorDTO.setBirthDate(managedUserVM.getBirthDate());
+        collaboratorDTO.setGender(managedUserVM.getGender());
+        collaboratorDTO.setCellPhone(managedUserVM.getCellPhone());
+        collaboratorDTO.setAddress(managedUserVM.getAddress());
+        collaboratorDTO.setStatus("1");
+        collaboratorDTO = collaboratorService.save(collaboratorDTO);
+
+        LinkAuthDTO linkAuthDTO = new LinkAuthDTO();
+        linkAuthDTO.setIdSession(user.getId());
+        linkAuthDTO.setIdCollaborator(collaboratorDTO.getId());
+
+        linkAuthDTO = linkAuthService.save(linkAuthDTO);
+
         mailService.sendActivationEmail(user);
     }
 

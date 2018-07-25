@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { Subscription } from 'rxjs/Subscription';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -10,6 +11,8 @@ import { LogWork } from './log-work.model';
 import { LogWorkPopupService } from './log-work-popup.service';
 import { LogWorkService } from './log-work.service';
 import { Project, ProjectService } from '../project';
+import { Account, LoginModalService, Principal } from '../../shared';
+
 
 @Component({
     selector: 'jhi-log-work-dialog',
@@ -21,28 +24,45 @@ export class LogWorkDialogComponent implements OnInit {
     isSaving: boolean;
 
     projects: Project[];
+    idProject:any;
+    eventSubscriber: Subscription;
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private logWorkService: LogWorkService,
         private projectService: ProjectService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private principal: Principal,
     ) {
     }
 
     ngOnInit() {
-        this.isSaving = false;
-        this.projectService.query()
-            .subscribe((res: HttpResponse<Project[]>) => { this.projects = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.principal.identity().then((account) => {
+            this.idProject = account.id;
+            this.getMyProjects();
+        });
+    }
+
+    getMyProjects():void{
+        this.projectService.findAllBycollaborator(this.idProject).subscribe(
+            (res: HttpResponse<Project[]>) => {
+                this.projects = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
     }
 
     clear() {
         this.activeModal.dismiss('cancel');
     }
 
+
+
     save() {
         this.isSaving = true;
+        this.logWork.status = "pending";
+        this.logWork.date = new Date().toDateString();
         if (this.logWork.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.logWorkService.update(this.logWork));
@@ -96,7 +116,7 @@ export class LogWorkPopupComponent implements OnInit, OnDestroy {
                     .open(LogWorkDialogComponent as Component, params['id']);
             } else {
                 this.logWorkPopupService
-                    .open(LogWorkDialogComponent as Component);
+                    .openNew(LogWorkDialogComponent as Component, params['idProject']);
             }
         });
     }

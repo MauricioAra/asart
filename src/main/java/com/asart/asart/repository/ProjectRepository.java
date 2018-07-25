@@ -1,9 +1,12 @@
 package com.asart.asart.repository;
 
+import com.asart.asart.domain.Collaborator;
 import com.asart.asart.domain.Project;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+
+import java.util.List;
 
 
 /**
@@ -12,5 +15,5 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Long> {
-
+    List<Project> findAllByCollaborator(Collaborator collaborator);
 }

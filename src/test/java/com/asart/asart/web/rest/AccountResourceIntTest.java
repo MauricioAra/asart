@@ -7,6 +7,8 @@ import com.asart.asart.domain.User;
 import com.asart.asart.repository.AuthorityRepository;
 import com.asart.asart.repository.UserRepository;
 import com.asart.asart.security.AuthoritiesConstants;
+import com.asart.asart.service.CollaboratorService;
+import com.asart.asart.service.LinkAuthService;
 import com.asart.asart.service.MailService;
 import com.asart.asart.service.dto.UserDTO;
 import com.asart.asart.web.rest.errors.ExceptionTranslator;
@@ -31,7 +33,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.Instant;
-import java.time.LocalDate;
 
 import java.util.*;
 
@@ -70,6 +71,12 @@ public class AccountResourceIntTest {
     @Autowired
     private ExceptionTranslator exceptionTranslator;
 
+    @Autowired
+    private CollaboratorService collaboratorService;
+
+    @Autowired
+    private LinkAuthService linkAuthService;
+
     @Mock
     private UserService mockUserService;
 
@@ -85,10 +92,10 @@ public class AccountResourceIntTest {
         MockitoAnnotations.initMocks(this);
         doNothing().when(mockMailService).sendActivationEmail(anyObject());
         AccountResource accountResource =
-            new AccountResource(userRepository, userService, mockMailService);
+            new AccountResource(userRepository, userService, mockMailService, collaboratorService, linkAuthService);
 
         AccountResource accountUserMockResource =
-            new AccountResource(userRepository, mockUserService, mockMailService);
+            new AccountResource(userRepository, mockUserService, mockMailService, collaboratorService, linkAuthService);
         this.restMvc = MockMvcBuilders.standaloneSetup(accountResource)
             .setMessageConverters(httpMessageConverters)
             .setControllerAdvice(exceptionTranslator)

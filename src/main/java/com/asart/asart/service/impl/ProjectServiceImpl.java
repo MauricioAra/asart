@@ -1,5 +1,9 @@
 package com.asart.asart.service.impl;
 
+import com.asart.asart.domain.Collaborator;
+import com.asart.asart.domain.LinkAuth;
+import com.asart.asart.repository.CollaboratorRepository;
+import com.asart.asart.repository.LinkAuthRepository;
 import com.asart.asart.service.ProjectService;
 import com.asart.asart.domain.Project;
 import com.asart.asart.repository.ProjectRepository;
@@ -27,9 +31,15 @@ public class ProjectServiceImpl implements ProjectService {
 
     private final ProjectMapper projectMapper;
 
-    public ProjectServiceImpl(ProjectRepository projectRepository, ProjectMapper projectMapper) {
+    private final LinkAuthRepository linkAuthRepository;
+
+    private final CollaboratorRepository collaboratorRepository;
+
+    public ProjectServiceImpl(ProjectRepository projectRepository, ProjectMapper projectMapper, LinkAuthRepository linkAuthRepository, CollaboratorRepository collaboratorRepository) {
         this.projectRepository = projectRepository;
         this.projectMapper = projectMapper;
+        this.linkAuthRepository = linkAuthRepository;
+        this.collaboratorRepository = collaboratorRepository;
     }
 
     /**
@@ -83,5 +93,14 @@ public class ProjectServiceImpl implements ProjectService {
     public void delete(Long id) {
         log.debug("Request to delete Project : {}", id);
         projectRepository.delete(id);
+    }
+
+    @Override
+    public List<ProjectDTO> findAllByIdCollaborator(Long id) {
+        LinkAuth linkAuth = linkAuthRepository.findByIdSession(id);
+        Collaborator collaborator = collaboratorRepository.findOne(linkAuth.getIdCollaborator());
+        return projectRepository.findAllByCollaborator(collaborator).stream()
+            .map(projectMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
     }
 }

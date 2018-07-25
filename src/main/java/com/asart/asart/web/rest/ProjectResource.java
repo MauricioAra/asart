@@ -115,4 +115,10 @@ public class ProjectResource {
         projectService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/projects/collaborator/{id}")
+    @Timed
+    public List<ProjectDTO> findAllByIdCollaborator(@PathVariable Long id) {
+        return projectService.findAllByIdCollaborator(id);
+    }
 }

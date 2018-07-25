@@ -12,6 +12,7 @@ export type EntityResponseType = HttpResponse<Project>;
 export class ProjectService {
 
     private resourceUrl =  SERVER_API_URL + 'api/projects';
+    private resourceUrlCollaborator =  SERVER_API_URL + 'api/projects/collaborator';
 
     constructor(private http: HttpClient) { }
 
@@ -35,6 +36,11 @@ export class ProjectService {
     query(req?: any): Observable<HttpResponse<Project[]>> {
         const options = createRequestOption(req);
         return this.http.get<Project[]>(this.resourceUrl, { params: options, observe: 'response' })
+            .map((res: HttpResponse<Project[]>) => this.convertArrayResponse(res));
+    }
+
+    findAllBycollaborator(id: number): Observable<HttpResponse<Project[]>> {
+        return this.http.get<Project[]>(`${this.resourceUrlCollaborator}/${id}`, { observe: 'response'})
             .map((res: HttpResponse<Project[]>) => this.convertArrayResponse(res));
     }
 

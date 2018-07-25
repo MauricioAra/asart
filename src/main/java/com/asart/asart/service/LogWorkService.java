@@ -1,5 +1,6 @@
 package com.asart.asart.service;
 
+import com.asart.asart.domain.LogWork;
 import com.asart.asart.service.dto.LogWorkDTO;
 import java.util.List;
 
@@ -37,4 +38,6 @@ public interface LogWorkService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    List<LogWorkDTO> findAllByProjectId(Long id);
 }

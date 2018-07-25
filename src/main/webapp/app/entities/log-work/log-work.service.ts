@@ -12,6 +12,7 @@ export type EntityResponseType = HttpResponse<LogWork>;
 export class LogWorkService {
 
     private resourceUrl =  SERVER_API_URL + 'api/log-works';
+    private resourceUrlLog =  SERVER_API_URL + 'api/log-works-by-project';
 
     constructor(private http: HttpClient) { }
 
@@ -40,6 +41,11 @@ export class LogWorkService {
 
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
+    }
+
+    getByProject(id: any): Observable<HttpResponse<LogWork[]>> {
+        return this.http.get<LogWork[]>(`${this.resourceUrlLog}/${id}`, { observe: 'response' })
+            .map((res: HttpResponse<LogWork[]>) => this.convertArrayResponse(res));
     }
 
     private convertResponse(res: EntityResponseType): EntityResponseType {

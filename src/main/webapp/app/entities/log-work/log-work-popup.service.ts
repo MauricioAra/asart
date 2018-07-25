@@ -42,6 +42,28 @@ export class LogWorkPopupService {
         });
     }
 
+    openNew(component: Component, id?: number | any): Promise<NgbModalRef> {
+        return new Promise<NgbModalRef>((resolve, reject) => {
+            const isOpen = this.ngbModalRef !== null;
+            if (isOpen) {
+                resolve(this.ngbModalRef);
+            }
+
+            if (id) {
+                const logWork: LogWork = new LogWork;
+                logWork.projectId = id;
+                this.ngbModalRef = this.logWorkModalRef(component, logWork);
+                resolve(this.ngbModalRef);
+            } else {
+                // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
+                setTimeout(() => {
+                    this.ngbModalRef = this.logWorkModalRef(component, new LogWork());
+                    resolve(this.ngbModalRef);
+                }, 0);
+            }
+        });
+    }
+
     logWorkModalRef(component: Component, logWork: LogWork): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.logWork = logWork;

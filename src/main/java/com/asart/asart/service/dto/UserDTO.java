@@ -53,6 +53,19 @@ public class UserDTO {
 
     private Set<String> authorities;
 
+    private String address;
+
+    private String birthDate;
+
+    private String cellPhone;
+
+    private String gender;
+
+    private String identification;
+
+    private String name;
+
+
     public UserDTO() {
         // Empty constructor needed for Jackson.
     }
@@ -177,6 +190,54 @@ public class UserDTO {
 
     public void setAuthorities(Set<String> authorities) {
         this.authorities = authorities;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getCellPhone() {
+        return cellPhone;
+    }
+
+    public void setCellPhone(String cellPhone) {
+        this.cellPhone = cellPhone;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getIdentification() {
+        return identification;
+    }
+
+    public void setIdentification(String identification) {
+        this.identification = identification;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

@@ -33,17 +33,6 @@
                 [(ngModel)]="logWork.minute" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_date">Date</label>
-            <input type="text" class="form-control" name="date" id="field_date"
-                [(ngModel)]="logWork.date" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" for="field_status">Status</label>
-            <input type="text" class="form-control" name="status" id="field_status"
-                [(ngModel)]="logWork.status" />
-        </div>
-
-        <div class="form-group">
             <label class="form-control-label" for="field_project">Project</label>
             <select class="form-control" id="field_project" name="project" [(ngModel)]="logWork.projectId" >
                 <option [ngValue]="null"></option>
