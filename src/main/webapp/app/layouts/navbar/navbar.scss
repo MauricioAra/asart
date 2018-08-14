@@ -8,7 +8,7 @@ Navbar
 }
 
 .jh-navbar {
-    background-color: #353d47;
+    background-color: #69d9e8;
     padding: .2em 1em;
     .profile-image {
         margin: -10px 0px;
@@ -17,7 +17,8 @@ Navbar
         border-radius: 50%;
     }
     .dropdown-item.active, .dropdown-item.active:focus, .dropdown-item.active:hover {
-        background-color: #353d47;
+        background-color: white;
+        color:#5985c4!important;
     }
     .dropdown-toggle::after {
         margin-left: 0.15em;
@@ -65,11 +66,11 @@ Logo styles
     &.logo {
         padding: 5px 15px;
         .logo-img {
-            height: 45px;
-            width: 70px;
+            height: 50px;
+            width: 75px;
             display: inline-block;
             vertical-align: middle;
-            background: url("../../../content/images/logo-jhipster.png") no-repeat center center;
+            background: url("../../../content/images/logo-asart.png") no-repeat center center;
             background-size: contain;
         }
     }

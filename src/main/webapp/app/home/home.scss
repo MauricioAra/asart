@@ -11,6 +11,24 @@ Main page styles
     background-size: contain;
 }
 
+.btn-register{
+    width: 100%;
+    color:#69d9e8;
+    text-align: center;
+    background-color: white;
+    border: 1px solid #69d9e8;
+    vertical-align: middle;
+    margin-top: 20px;
+}
+
+.btn-register:hover{
+    color:white;
+    background-color: #69d9e8;
+}
+
+.input-register{
+    border: transparent;
+}
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),

@@ -6,6 +6,11 @@ Bootstrap tweaks
 
 body, h1, h2, h3, h4 {
     font-weight: 300;
+    overflow-y:hidden;
+    overflow-x:hidden;
+    font-family: 'Roboto Condensed', sans-serif;
+    color:#575757;
+    background-color: white;
 }
 
 a {
@@ -78,6 +83,8 @@ Generic styles
 
 .footer {
     border-top: 1px solid rgba(0,0,0,.125);
+    font-size: 10px;
+    text-align: right;
 }
 
 /* ==========================================================================

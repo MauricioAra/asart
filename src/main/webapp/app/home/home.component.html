@@ -1,4 +1,4 @@
-<div [ngSwitch]="isAuthenticated()">
+<div [ngSwitch]="isAuthenticated()" style="padding-top: 50px">
     <div *ngSwitchCase="true">
         <div>
             <div *jhiHasAnyAuthority="'ROLE_ADMIN'">
@@ -19,40 +19,47 @@
     </div>
     <div *ngSwitchCase="false">
         <div class="row justify-content-center">
-            <div class="col-md-4 card jh-card">
+            <div>
+                <h2>Inicio de sesión</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4 card jh-card" style="background-color: #f7f7f7">
                 <div>
-                    <div class="alert alert-danger" *ngIf="authenticationError">
-                        <strong>¡Falló el inicio de sesión!</strong> Por favor revise sys credenciales.
+                    <div>
+                        <div cdiss="alert alert-danger" *ngIf="authenticationError">
+                            <strong>¡Falló el inicio de sesión!</strong> Por favor revise sys credenciales.
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <form class="form" role="form" (ngSubmit)="login()">
-                        <div class="form-group">
-                            <label for="username">Correo</label>
-                            <input type="text" class="form-control" name="username" id="username" placeholder=""
-                                   [(ngModel)]="username">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Contraseña</label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder=""
-                                   [(ngModel)]="password">
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label" for="rememberMe">
-                                <input class="form-check-input" type="checkbox" name="rememberMe" id="rememberMe" [(ngModel)]="rememberMe" checked>
-                                <span>Recordarme</span>
-                            </label>
-                        </div>
-                        <br>
-                        <button type="submit" class="btn btn-primary">Ingresar</button>
-                    </form>
-                    <p></p>
-                    <!--<div class="alert alert-warning">-->
+                    <div>
+                        <form class="form" role="form" (ngSubmit)="login()">
+                            <div class="form-group">
+                                <label for="username" style="color:#69d9e8">Correo</label>
+                                <input type="text" class="form-control input-register" name="username" id="username" placeholder=""
+                                       [(ngModel)]="username">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" style="color:#69d9e8">Contraseña</label>
+                                <input type="password" class="form-control input-register" name="password" id="password" placeholder=""
+                                       [(ngModel)]="password">
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label" for="rememberMe">
+                                    <input class="form-check-input" type="checkbox" name="rememberMe" id="rememberMe" [(ngModel)]="rememberMe" checked>
+                                    <span style="font-size: 14px">Recordarme</span>
+                                </label>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-register">Ingresar</button>
+                        </form>
+                        <p></p>
+                        <!--<div class="alert alert-warning">-->
                         <!--<a class="alert-link" (click)="requestResetPassword()">Did you forget your password?</a>-->
-                    <!--</div>-->
-                    <div class="alert alert-warning">
-                        <span>¿No tienes una cuenta?</span>
-                        <a class="alert-link" (click)="register()">Registrate ahora mismo</a>
+                        <!--</div>-->
+                        <div style="text-align: center; font-size: 13px">
+                            <span>¿No tienes una cuenta?</span>
+                            <a class="alert-link" (click)="register()">Registrate ahora mismo</a>
+                        </div>
                     </div>
                 </div>
             </div>
