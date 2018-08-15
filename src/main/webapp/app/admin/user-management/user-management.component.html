@@ -1,8 +1,8 @@
 <div>
     <h2>
-        <span>Users</span>
+        <span>Usuarios/span>
         <button class="btn btn-primary float-right jh-create-entity" [routerLink]="['/', { outlets: { popup: ['user-management-new'] } }]">
-            <span class="fa fa-plus"></span> <span>Create a new User</span>
+            <span class="fa fa-plus"></span> <span>Crear un nuevo usuario</span>
         </button>
     </h2>
     <jhi-alert></jhi-alert>
@@ -12,12 +12,12 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
                 <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
                 <th jhiSortBy="login"><span>Login</span> <span class="fa fa-sort"></span></th>
-                <th jhiSortBy="email"><span>Email</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="email"><span>Correo</span> <span class="fa fa-sort"></span></th>
                 <th></th>
                 <th><span>Profiles</span></th>
-                <th jhiSortBy="createdDate"><span>Created Date</span> <span class="fa fa-sort"></span></th>
-                <th jhiSortBy="lastModifiedBy"><span>Last Modified By</span> <span class="fa fa-sort"></span></th>
-                <th jhiSortBy="lastModifiedDate"><span>Last Modified Date</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="createdDate"><span>Fecha creación</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="lastModifiedBy"><span>última vez modificado por:</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="lastModifiedDate"><span>Última fecha de modificación:</span> <span class="fa fa-sort"></span></th>
                 <th></th>
             </tr>
             </thead>
@@ -30,9 +30,9 @@
                     <button class="btn btn-danger btn-sm" (click)="setActive(user, true)" *ngIf="!user.activated"
                            >Deactivated</button>
                     <button class="btn btn-success btn-sm" (click)="setActive(user, false)" *ngIf="user.activated"
-                            [disabled]="currentAccount.login === user.login">Activated</button>
+                            [disabled]="currentAccount.login === user.login">Activado</button>
                 </td>
-                
+
                 <td>
                     <div *ngFor="let authority of user.authorities">
                         <span class="badge badge-info">{{ authority }}</span>
@@ -47,7 +47,7 @@
                                 [routerLink]="['../user-management', user.login]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline">View</span>
+                            <span class="d-none d-md-inline">Ver</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'user-management/'+ user.login + '/edit'} }]"
@@ -55,7 +55,7 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
-                            <span class="d-none d-md-inline">Edit</span>
+                            <span class="d-none d-md-inline">Editar</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'user-management/'+ user.login + '/delete'} }]"
@@ -63,7 +63,7 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm" [disabled]="currentAccount.login === user.login">
                             <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline">Delete</span>
+                            <span class="d-none d-md-inline">Borrar</span>
                         </button>
                     </div>
                 </td>

@@ -1,10 +1,6 @@
 <div [ngSwitch]="isAuthenticated()" style="padding-top: 50px">
     <div *ngSwitchCase="true">
         <div>
-            <div *jhiHasAnyAuthority="'ROLE_ADMIN'">
-                Usuario admin
-            </div>
-
             <div *jhiHasAnyAuthority="'ROLE_USER'">
                 <div class="container-fluid">
                     <div class="row">

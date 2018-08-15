@@ -1,19 +1,19 @@
 <form name="deleteForm" (ngSubmit)="confirmDelete(linkAuth.id)">
     <div class="modal-header">
-        <h4 class="modal-title">Confirm delete operation</h4>
+        <h4 class="modal-title">Confirmar operación de borrado</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <p>Are you sure you want to delete this Link Auth?</p>
+        <p>Está seguro que quiere borrar este Link Auth?</p>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
-            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancelar</span>
         </button>
         <button type="submit" class="btn btn-danger">
-            <span class="fa fa-remove"></span>&nbsp;<span>Delete</span>
+            <span class="fa fa-remove"></span>&nbsp;<span>Borrar</span>
         </button>
     </div>
 </form>

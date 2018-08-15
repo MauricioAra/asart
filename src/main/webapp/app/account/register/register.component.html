@@ -2,23 +2,23 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="alert alert-success" *ngIf="success">
-                <strong>Registration saved!</strong> Please check your email for confirmation.
+                <strong>Se guardaron los cambios!</strong> Por favor revise su correo para la verificación.
             </div>
 
             <div class="alert alert-danger" *ngIf="error">
-                <strong>Registration failed!</strong> Please try again later.
+                <strong>Falló el registro</strong>Intente más tarde.
             </div>
 
             <div class="alert alert-danger" *ngIf="errorUserExists">
-                <strong>Login name already registered!</strong> Please choose another one.
+                <strong>El nombre ya ha sido registrado</strong> Por favor elija otro.
             </div>
 
             <div class="alert alert-danger" *ngIf="errorEmailExists">
-                <strong>Email is already in use!</strong> Please choose another one.
+                <strong>El correo ya está en uso!</strong> Por favor seleccione otro.
             </div>
 
             <div class="alert alert-danger" *ngIf="doNotMatch">
-                The password and its confirmation do not match!
+                La contraseña y su confirmación no son iguales.
             </div>
         </div>
     </div>
@@ -96,12 +96,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" for="email">Célular</label>
+                    <label class="form-control-label" for="email">Celular</label>
                     <input type="text" class="form-control" id="cellPhone" name="cellPhone" #cellPhone="ngModel" placeholder=""
                            [(ngModel)]="registerAccount.cellPhone" required>
                     <div *ngIf="cellPhone.dirty && cellPhone.invalid">
                         <small class="form-text text-danger" *ngIf="cellPhone.errors.required">
-                            Su célular es requerido.
+                            Su celular es requerido.
                         </small>
                     </div>
                 </div>
@@ -129,19 +129,19 @@
                     <div *ngIf="email.dirty && email.invalid">
                         <small class="form-text text-danger" *ngIf="email.errors.required"
                         >
-                            Your email is required.
+                            Su correo es requerido.
                         </small>
                         <small class="form-text text-danger" *ngIf="email.errors.invalid"
                         >
-                            Your email is invalid.
+                           Su correo es invalido.
                         </small>
                         <small class="form-text text-danger" *ngIf="email.errors.minlength"
                         >
-                            Your email is required to be at least 5 characters.
+                            Se requiere que su correo tenga 5 caracteres al menos.
                         </small>
                         <small class="form-text text-danger" *ngIf="email.errors.maxlength"
                         >
-                            Your email cannot be longer than 100 characters.
+                           Su correo no puede ser más de 100 caracteres.
                         </small>
                     </div>
                 </div>
@@ -152,15 +152,15 @@
                     <div *ngIf="password.dirty && password.invalid">
                         <small class="form-text text-danger" *ngIf="password.errors.required"
                         >
-                            Your password is required.
+                            Su contraseña es requerida.
                         </small>
                         <small class="form-text text-danger" *ngIf="password.errors.minlength"
                         >
-                            Your password is required to be at least 4 characters.
+                            Su contraseña requiere tener al menos 4 caracteres.
                         </small>
                         <small class="form-text text-danger" *ngIf="password.errors.maxlength"
                         >
-                            Your password cannot be longer than 50 characters.
+                            Su contraseña no puede ser más larga que 50 caracteres.
                         </small>
                     </div>
                     <jhi-password-strength-bar [passwordToCheck]="registerAccount.password"></jhi-password-strength-bar>
@@ -172,15 +172,15 @@
                     <div *ngIf="confirmPasswordInput.dirty && confirmPasswordInput.invalid">
                         <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.required"
                         >
-                            Your confirmation password is required.
+                            La confirmación de la contraseña es requerida.
                         </small>
                         <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.minlength"
                         >
-                            Your confirmation password is required to be at least 4 characters.
+                            La confirmación de la contraseña es requerida debe de tener al menos 4 caracteres.
                         </small>
                         <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.maxlength"
                         >
-                            Your confirmation password cannot be longer than 50 characters.
+                            La confirmación de la contraseña no puede ser más larga de 50 caracteres.
                         </small>
                     </div>
                 </div>

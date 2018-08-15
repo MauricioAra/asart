@@ -6,7 +6,7 @@
                 <button type="submit"
                         (click)="previousState()"
                         class="btn btn-info">
-                    <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+                    <span class="fa fa-arrow-left"></span>&nbsp;<span>Atrás</span>
                 </button>
 
                 <button type="button"
@@ -14,7 +14,7 @@
                         replaceUrl="true"
                         queryParamsHandling="merge"
                         class="btn btn-primary">
-                    <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+                    <span class="fa fa-pencil"></span>&nbsp;<span> Editar</span>
                 </button>
             </div>
             <div class="col-md-4">
@@ -30,7 +30,7 @@
                 <div style="background-color:#479dcf;color:white">
                     <div style="padding-top: 20px; padding-bottom: 10px">
                         <dl style="text-align: center!important;">
-                            <dt><span style="letter-spacing: 1px">Total Hours</span></dt>
+                            <dt><span style="letter-spacing: 1px">Total horas</span></dt>
                             <dd>
                                 <span style="font-size: 40px;">{{project.totalHours}}</span>
                             </dd>
@@ -39,15 +39,15 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <dt><span>Name</span></dt>
+                <dt><span>Nombre</span></dt>
                 <dd>
                     <span>{{project.name}}</span>
                 </dd>
-                <dt><span>Description</span></dt>
+                <dt><span>Descripción</span></dt>
                 <dd>
                     <span>{{project.description}}</span>
                 </dd>
-                <dt><span>Collaborator</span></dt>
+                <dt><span>Colaborador</span></dt>
                 <dd>
                     <div *ngIf="project.collaboratorId">
                         <a [routerLink]="['/collaborator', project.collaboratorId]">{{project.collaboratorName}}</a>
@@ -56,7 +56,7 @@
             </div>
             <div class="col-md-2">
                 <dl class="row-md jh-entity-details">
-                    <dt><span>Start Date</span></dt>
+                    <dt><span>Fecha de inicio</span></dt>
                     <dd>
                         <span>{{project.startDate}}</span>
                     </dd>
@@ -64,7 +64,7 @@
                     <dd>
                         <span>{{project.endDate}}</span>
                     </dd>
-                    <dt><span>Status</span></dt>
+                    <dt><span>Estado</span></dt>
                     <dd>
                         <span>{{project.status}}</span>
                     </dd>
@@ -76,7 +76,7 @@
     <button class="btn float-right jh-create-entity create-log-work" [routerLink]="['/', { outlets: { popup: 'log-work-new' } }]" style="background-color: #fb9e39; color: white">
         <span class="fa fa-plus"></span>
         <span>
-            Create new Log Work
+            Crear nuevo
             </span>
     </button>
 </div>
@@ -85,12 +85,12 @@
         <thead>
         <tr>
             <th><span>ID</span></th>
-            <th><span>Name</span></th>
-            <th><span>Description</span></th>
-            <th><span>Hour</span></th>
-            <th><span>Minute</span></th>
-            <th><span>Date</span></th>
-            <th><span>Status</span></th>
+            <th><span>Nombre</span></th>
+            <th><span>Descripción</span></th>
+            <th><span>Hora</span></th>
+            <th><span>Minuto</span></th>
+            <th><span>Fecha</span></th>
+            <th><span>Estado</span></th>
             <th><span>Project</span></th>
             <th></th>
         </tr>
@@ -115,7 +115,7 @@
                             [routerLink]="['../log-work', logWork.id ]"
                             class="btn btn-info btn-sm">
                         <span class="fa fa-eye"></span>
-                        <span class="d-none d-md-inline">View</span>
+                        <span class="d-none d-md-inline">Ver</span>
                     </button>
                     <button type="submit"
                             [routerLink]="['/', { outlets: { popup: 'log-work/'+ logWork.id + '/edit'} }]"
@@ -123,7 +123,7 @@
                             queryParamsHandling="merge"
                             class="btn btn-primary btn-sm">
                         <span class="fa fa-pencil"></span>
-                        <span class="d-none d-md-inline">Edit</span>
+                        <span class="d-none d-md-inline">Editar</span>
                     </button>
                     <button type="submit"
                             [routerLink]="['/', { outlets: { popup: 'log-work/'+ logWork.id + '/delete'} }]"
@@ -131,7 +131,7 @@
                             queryParamsHandling="merge"
                             class="btn btn-danger btn-sm">
                         <span class="fa fa-remove"></span>
-                        <span class="d-none d-md-inline">Delete</span>
+                        <span class="d-none d-md-inline">Borrar</span>
                     </button>
                 </div>
             </td>

@@ -1,51 +1,51 @@
 
 <div *ngIf="collaborator" style="margin-top: 50px">
-    <h2><span>Collaborator</span> {{collaborator.id}}</h2>
+    <h2><span>Colaborador</span> {{collaborator.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <div class="container-fluid">
         <div class="row">
            <div class="col-md-2">
                <dl class="row-md jh-entity-details">
-                   <dt><span>Name</span></dt>
+                   <dt><span>Nombre</span></dt>
                    <dd>
                        <span>{{collaborator.name}}</span>
                    </dd>
-                   <dt><span>First Name</span></dt>
+                   <dt><span>Primer apellido</span></dt>
                    <dd>
                        <span>{{collaborator.firstName}}</span>
                    </dd>
-                   <dt><span>Last Name</span></dt>
+                   <dt><span>Segundo apellido</span></dt>
                    <dd>
                        <span>{{collaborator.lastName}}</span>
                    </dd>
                </dl>
            </div>
             <div class="col-md-2">
-                <dt><span>Identification</span></dt>
+                <dt><span>Identificación</span></dt>
                 <dd>
                     <span>{{collaborator.identification}}</span>
                 </dd>
-                <dt><span>Birth Date</span></dt>
+                <dt><span>Fecha nacimiento</span></dt>
                 <dd>
                     <span>{{collaborator.birthDate}}</span>
                 </dd>
-                <dt><span>Gender</span></dt>
+                <dt><span>Género</span></dt>
                 <dd>
                     <span>{{collaborator.gender}}</span>
                 </dd>
             </div>
             <div class="col-md-2">
                 <dl class="row-md jh-entity-details">
-                    <dt><span>Cell Phone</span></dt>
+                    <dt><span>Celular</span></dt>
                     <dd>
                         <span>{{collaborator.cellPhone}}</span>
                     </dd>
-                    <dt><span>Address</span></dt>
+                    <dt><span>Dirección</span></dt>
                     <dd>
                         <span>{{collaborator.address}}</span>
                     </dd>
-                    <dt><span>Status</span></dt>
+                    <dt><span>Estado</span></dt>
                     <dd>
                         <span>{{collaborator.status}}</span>
                     </dd>
@@ -57,7 +57,7 @@
     <button type="submit"
             (click)="previousState()"
             class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="fa fa-arrow-left"></span>&nbsp;<span>Atrás</span>
     </button>
 
     <button type="button"
@@ -65,6 +65,6 @@
             replaceUrl="true"
             queryParamsHandling="merge"
             class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+        <span class="fa fa-pencil"></span>&nbsp;<span> Editar</span>
     </button>
 </div>

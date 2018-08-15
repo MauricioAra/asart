@@ -1,7 +1,7 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myCollaboratorLabel">Create or edit a Collaborator</h4>
+        <h4 class="modal-title" id="myCollaboratorLabel">Crear o editar colaborador</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
@@ -13,47 +13,47 @@
                    [(ngModel)]="collaborator.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_identification">Identification</label>
+            <label class="form-control-label" for="field_identification">Identificación</label>
             <input type="text" class="form-control" name="identification" id="field_identification"
                 [(ngModel)]="collaborator.identification" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_name">Name</label>
+            <label class="form-control-label" for="field_name">Nombre</label>
             <input type="text" class="form-control" name="name" id="field_name"
                 [(ngModel)]="collaborator.name" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_firstName">First Name</label>
+            <label class="form-control-label" for="field_firstName">Primer apellido</label>
             <input type="text" class="form-control" name="firstName" id="field_firstName"
                 [(ngModel)]="collaborator.firstName" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_lastName">Last Name</label>
+            <label class="form-control-label" for="field_lastName">Segundo apellido</label>
             <input type="text" class="form-control" name="lastName" id="field_lastName"
                 [(ngModel)]="collaborator.lastName" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_birthDate">Birth Date</label>
+            <label class="form-control-label" for="field_birthDate">Fecha nacimiento</label>
             <input type="text" class="form-control" name="birthDate" id="field_birthDate"
                 [(ngModel)]="collaborator.birthDate" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_gender">Gender</label>
+            <label class="form-control-label" for="field_gender">Género</label>
             <input type="text" class="form-control" name="gender" id="field_gender"
                 [(ngModel)]="collaborator.gender" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_cellPhone">Cell Phone</label>
+            <label class="form-control-label" for="field_cellPhone">Teléfono</label>
             <input type="text" class="form-control" name="cellPhone" id="field_cellPhone"
                 [(ngModel)]="collaborator.cellPhone" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_address">Address</label>
+            <label class="form-control-label" for="field_address">Dirección</label>
             <input type="text" class="form-control" name="address" id="field_address"
                 [(ngModel)]="collaborator.address" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_status">Status</label>
+            <label class="form-control-label" for="field_status">Estado</label>
             <input type="text" class="form-control" name="status" id="field_status"
                 [(ngModel)]="collaborator.status" />
         </div>
@@ -61,10 +61,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
-            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancelar</span>
         </button>
         <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+            <span class="fa fa-save"></span>&nbsp;<span>Guardar</span>
         </button>
     </div>
 </form>

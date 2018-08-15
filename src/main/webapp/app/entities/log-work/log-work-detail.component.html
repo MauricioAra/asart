@@ -9,7 +9,7 @@
                 <div style="letter-spacing: 1px">
                     <dl class="row-md jh-entity-details">
                         <div style="text-align: center; margin-top: 10px">
-                            <dt><span>Date</span></dt>
+                            <dt><span>Fecha</span></dt>
                             <dd>
                                 <span>{{logWork.date}}</span>
                             </dd>
@@ -20,13 +20,13 @@
                                     <dd>
                                         <span style="font-size: 40px">{{logWork.hour}}</span>
                                     </dd>
-                                    <dt><span>Hour</span></dt>
+                                    <dt><span>Hora</span></dt>
                                 </div>
                                 <div class="col-md-6" style="text-align: center">
                                     <dd>
                                         <span style="font-size: 40px">{{logWork.minute}}</span>
                                     </dd>
-                                    <dt><span>Minute</span></dt>
+                                    <dt><span>Minuto</span></dt>
                                 </div>
                             </div>
                         </div>
@@ -35,11 +35,11 @@
             </div>
             <div class="col-md-5">
                 <dl class="row-md jh-entity-details">
-                    <dt><span>Name</span></dt>
+                    <dt><span>Nombre tarea</span></dt>
                     <dd>
                         <span>{{logWork.name}}</span>
                     </dd>
-                    <dt><span>Description</span></dt>
+                    <dt><span>Descripción</span></dt>
                     <dd>
                         <span>{{logWork.description}}</span>
                     </dd>
@@ -47,11 +47,11 @@
             </div>
             <div class="col-md-4">
                 <dl class="row-md jh-entity-details">
-                    <dt><span>Status</span></dt>
+                    <dt><span>Estado</span></dt>
                     <dd>
                         <span>{{logWork.status}}</span>
                     </dd>
-                    <dt><span>Project</span></dt>
+                    <dt><span>Proyecto</span></dt>
                     <dd>
                         <div *ngIf="logWork.projectId">
                             <a [routerLink]="['/project', logWork.projectId]">{{logWork.projectName}}</a>
@@ -65,7 +65,7 @@
         <button type="submit"
                 (click)="previousState()"
                 class="btn btn-info">
-            <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+            <span class="fa fa-arrow-left"></span>&nbsp;<span>Atrás</span>
         </button>
 
         <button type="button"
@@ -73,7 +73,7 @@
                 replaceUrl="true"
                 queryParamsHandling="merge"
                 class="btn btn-primary">
-            <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+            <span class="fa fa-pencil"></span>&nbsp;<span> Editar</span>
         </button>
     </div>
 </div>
