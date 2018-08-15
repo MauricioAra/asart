@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { HttpErrorResponse } from '@angular/common/http';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-
+import { Observable } from 'rxjs/Observable';
 import { Project } from './project.model';
 import { ProjectService } from './project.service';
 
@@ -71,5 +71,25 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
 
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    setLogWork(logWork:LogWork, pstatus:string){
+        logWork.status = pstatus;
+        this.subscribeToSaveResponse(
+            this.logWorkService.update(logWork));
+    }
+
+    private subscribeToSaveResponse(result: Observable<HttpResponse<LogWork>>) {
+        result.subscribe((res: HttpResponse<LogWork>) =>
+            this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError());
+    }
+
+    private onSaveSuccess(result: LogWork) {
+        this.ngOnInit();
+
+    }
+
+    private onSaveError() {
+
     }
 }

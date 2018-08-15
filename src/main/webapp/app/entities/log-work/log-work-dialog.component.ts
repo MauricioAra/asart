@@ -61,7 +61,7 @@ export class LogWorkDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        this.logWork.status = "pending";
+        this.logWork.status = "P";
         this.logWork.date = new Date().toDateString();
         if (this.logWork.id !== undefined) {
             this.subscribeToSaveResponse(

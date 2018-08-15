@@ -166,17 +166,17 @@ public class UserService {
             .findOne(userDTO.getId()))
             .map(user -> {
                 user.setLogin(userDTO.getLogin());
-                user.setFirstName(userDTO.getFirstName());
-                user.setLastName(userDTO.getLastName());
-                user.setEmail(userDTO.getEmail());
-                user.setImageUrl(userDTO.getImageUrl());
+//                user.setFirstName(userDTO.getFirstName());
+//                user.setLastName(userDTO.getLastName());
+//                user.setEmail(userDTO.getEmail());
+//                user.setImageUrl(userDTO.getImageUrl());
                 user.setActivated(userDTO.isActivated());
-                user.setLangKey(userDTO.getLangKey());
-                Set<Authority> managedAuthorities = user.getAuthorities();
-                managedAuthorities.clear();
-                userDTO.getAuthorities().stream()
-                    .map(authorityRepository::findOne)
-                    .forEach(managedAuthorities::add);
+//                user.setLangKey(userDTO.getLangKey());
+//                Set<Authority> managedAuthorities = user.getAuthorities();
+
+//                userDTO.getAuthorities().stream()
+//                    .map(authorityRepository::findOne)
+//                    .forEach(managedAuthorities::add);
                 log.debug("Changed Information for User: {}", user);
                 return user;
             })

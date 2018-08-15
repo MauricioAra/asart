@@ -31,6 +31,12 @@ public class CollaboratorDTO implements Serializable {
 
     private String status;
 
+    private Long idUser;
+
+    private boolean activated = false;
+
+    private String login;
+
     public Long getId() {
         return id;
     }
@@ -109,6 +115,31 @@ public class CollaboratorDTO implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     @Override

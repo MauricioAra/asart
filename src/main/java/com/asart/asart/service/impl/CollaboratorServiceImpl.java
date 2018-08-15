@@ -1,5 +1,9 @@
 package com.asart.asart.service.impl;
 
+import com.asart.asart.domain.LinkAuth;
+import com.asart.asart.domain.User;
+import com.asart.asart.repository.LinkAuthRepository;
+import com.asart.asart.repository.UserRepository;
 import com.asart.asart.service.CollaboratorService;
 import com.asart.asart.domain.Collaborator;
 import com.asart.asart.repository.CollaboratorRepository;
@@ -27,9 +31,15 @@ public class CollaboratorServiceImpl implements CollaboratorService {
 
     private final CollaboratorMapper collaboratorMapper;
 
-    public CollaboratorServiceImpl(CollaboratorRepository collaboratorRepository, CollaboratorMapper collaboratorMapper) {
+    private final UserRepository userRepository;
+
+    private final LinkAuthRepository linkAuthRepository;
+
+    public CollaboratorServiceImpl(CollaboratorRepository collaboratorRepository, CollaboratorMapper collaboratorMapper, UserRepository userRepository, LinkAuthRepository linkAuthRepository) {
         this.collaboratorRepository = collaboratorRepository;
         this.collaboratorMapper = collaboratorMapper;
+        this.userRepository = userRepository;
+        this.linkAuthRepository = linkAuthRepository;
     }
 
     /**
@@ -55,9 +65,20 @@ public class CollaboratorServiceImpl implements CollaboratorService {
     @Transactional(readOnly = true)
     public List<CollaboratorDTO> findAll() {
         log.debug("Request to get all Collaborators");
-        return collaboratorRepository.findAll().stream()
+
+        List<CollaboratorDTO> collaboratorDTOS = collaboratorRepository.findAll().stream()
             .map(collaboratorMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
+
+        for(CollaboratorDTO collaboratorDTO : collaboratorDTOS){
+            LinkAuth linkAuth = linkAuthRepository.findByIdCollaborator(collaboratorDTO.getId());
+            User user = userRepository.findOne(linkAuth.getIdSession());
+            collaboratorDTO.setIdUser(user.getId());
+            collaboratorDTO.setActivated(user.getActivated());
+            collaboratorDTO.setLogin(user.getLogin());
+        }
+
+        return collaboratorDTOS;
     }
 
     /**

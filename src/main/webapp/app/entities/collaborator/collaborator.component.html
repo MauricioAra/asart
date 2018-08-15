@@ -40,7 +40,10 @@
                 <td>{{collaborator.gender}}</td>
                 <td>{{collaborator.cellPhone}}</td>
                 <td>{{collaborator.address}}</td>
-                <td>{{collaborator.status}}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" (click)="setActive(collaborator, true)" *ngIf="!collaborator.activated">Deactivated</button>
+                    <button class="btn btn-success btn-sm" (click)="setActive(collaborator, false)" *ngIf="collaborator.activated">Activado</button>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

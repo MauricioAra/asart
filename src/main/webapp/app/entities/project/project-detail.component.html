@@ -9,7 +9,7 @@
                     <span class="fa fa-arrow-left"></span>&nbsp;<span>Atrás</span>
                 </button>
 
-                <button type="button"
+                <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="button"
                         [routerLink]="['/', { outlets: { popup: 'project/'+ project.id + '/edit'} }]"
                         replaceUrl="true"
                         queryParamsHandling="merge"
@@ -18,7 +18,7 @@
                 </button>
             </div>
             <div class="col-md-4">
-                <h2 style="text-align: center"><span>Project</span> {{project.id}}</h2>
+                <h2 style="text-align: center"></h2>
             </div>
         </div>
     </div>
@@ -76,10 +76,11 @@
     <button class="btn float-right jh-create-entity create-log-work" [routerLink]="['/', { outlets: { popup: 'log-work-new' } }]" style="background-color: #fb9e39; color: white">
         <span class="fa fa-plus"></span>
         <span>
-            Crear nuevo
+            Crear nueva tarea
             </span>
     </button>
 </div>
+<br>
 <div class="table-responsive" *ngIf="logWorks">
     <table class="table table-striped">
         <thead>
@@ -91,7 +92,8 @@
             <th><span>Minuto</span></th>
             <th><span>Fecha</span></th>
             <th><span>Estado</span></th>
-            <th><span>Project</span></th>
+            <!--<th><span>Project</span></th>-->
+            <th *jhiHasAnyAuthority="'ROLE_ADMIN'"></th>
             <th></th>
         </tr>
         </thead>
@@ -103,10 +105,30 @@
             <td>{{logWork.hour}}</td>
             <td>{{logWork.minute}}</td>
             <td>{{logWork.date}}</td>
-            <td>{{logWork.status}}</td>
             <td>
-                <div *ngIf="logWork.projectId">
-                    <a [routerLink]="['../project', logWork.projectId  ]" >{{logWork.projectName}}</a>
+                <span *ngIf="logWork.status === 'P'">Pendiente</span>
+                <span *ngIf="logWork.status === 'A'">Aceptado</span>
+                <span *ngIf="logWork.status === 'R'">Rechazado</span>
+            </td>
+            <!--<td>-->
+                <!--<div *ngIf="logWork.projectId">-->
+                    <!--<a [routerLink]="['../project', logWork.projectId  ]" >{{logWork.projectName}}</a>-->
+                <!--</div>-->
+            <!--</td>-->
+            <td class="text-right" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                <div  *ngIf="logWork.status === 'P'" class="btn-group flex-btn-group-container">
+                    <button type="submit"
+                            (click)="setLogWork(logWork,'A')"
+                            class="btn btn-info btn-sm">
+                        <span class="fa fa-eye"></span>
+                        <span class="d-none d-md-inline">Aceptar</span>
+                    </button>
+                    <button type="submit"
+                            (click)="setLogWork(logWork,'R')"
+                            class="btn btn-danger btn-sm">
+                        <span class="fa fa-remove"></span>
+                        <span class="d-none d-md-inline">Rechazar</span>
+                    </button>
                 </div>
             </td>
             <td class="text-right">

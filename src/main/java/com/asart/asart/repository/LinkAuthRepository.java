@@ -13,4 +13,5 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface LinkAuthRepository extends JpaRepository<LinkAuth, Long> {
     LinkAuth findByIdSession(Long IdSesion);
+    LinkAuth findByIdCollaborator(Long idCollaborator);
 }

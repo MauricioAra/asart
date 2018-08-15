@@ -7,6 +7,8 @@ import { Collaborator } from './collaborator.model';
 import { CollaboratorService } from './collaborator.service';
 import { Principal } from '../../shared';
 
+import { ITEMS_PER_PAGE, User, UserService } from '../../shared';
+
 @Component({
     selector: 'jhi-collaborator',
     templateUrl: './collaborator.component.html'
@@ -20,7 +22,8 @@ collaborators: Collaborator[];
         private collaboratorService: CollaboratorService,
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
-        private principal: Principal
+        private principal: Principal,
+        private userService: UserService,
     ) {
     }
 
@@ -28,6 +31,7 @@ collaborators: Collaborator[];
         this.collaboratorService.query().subscribe(
             (res: HttpResponse<Collaborator[]>) => {
                 this.collaborators = res.body;
+                console.log(this.collaborators);
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -38,6 +42,23 @@ collaborators: Collaborator[];
             this.currentAccount = account;
         });
         this.registerChangeInCollaborators();
+    }
+
+    setActive(collaborator, isActivated) {
+        const user = {
+            id:collaborator.idUser,
+            activated:isActivated,
+            login: collaborator.login
+        }
+
+        console.log(user);
+
+        this.userService.update(user).subscribe(
+            (response) => {
+                if (response.status === 200) {
+                    this.loadAll();
+                }
+            });
     }
 
     ngOnDestroy() {
