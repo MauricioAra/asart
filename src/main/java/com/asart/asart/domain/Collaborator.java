@@ -49,6 +49,12 @@ public class Collaborator implements Serializable {
     @Column(name = "status")
     private String status;
 
+    @Column(name = "university")
+    private String university;
+
+    @Column(name = "career")
+    private String career;
+
     @OneToMany(mappedBy = "collaborator")
     @JsonIgnore
     private Set<Project> projects = new HashSet<>();
@@ -179,6 +185,32 @@ public class Collaborator implements Serializable {
         this.status = status;
     }
 
+    public String getUniversity() {
+        return university;
+    }
+
+    public Collaborator university(String university) {
+        this.university = university;
+        return this;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
+    }
+
+    public String getCareer() {
+        return career;
+    }
+
+    public Collaborator career(String career) {
+        this.career = career;
+        return this;
+    }
+
+    public void setCareer(String career) {
+        this.career = career;
+    }
+
     public Set<Project> getProjects() {
         return projects;
     }
@@ -238,6 +270,8 @@ public class Collaborator implements Serializable {
             ", cellPhone='" + getCellPhone() + "'" +
             ", address='" + getAddress() + "'" +
             ", status='" + getStatus() + "'" +
+            ", university='" + getUniversity() + "'" +
+            ", career='" + getCareer() + "'" +
             "}";
     }
 }

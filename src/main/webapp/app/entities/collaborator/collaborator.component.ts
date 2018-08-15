@@ -31,7 +31,6 @@ collaborators: Collaborator[];
         this.collaboratorService.query().subscribe(
             (res: HttpResponse<Collaborator[]>) => {
                 this.collaborators = res.body;
-                console.log(this.collaborators);
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -42,6 +41,21 @@ collaborators: Collaborator[];
             this.currentAccount = account;
         });
         this.registerChangeInCollaborators();
+    }
+
+    ngOnDestroy() {
+        this.eventManager.destroy(this.eventSubscriber);
+    }
+
+    trackId(index: number, item: Collaborator) {
+        return item.id;
+    }
+    registerChangeInCollaborators() {
+        this.eventSubscriber = this.eventManager.subscribe('collaboratorListModification', (response) => this.loadAll());
+    }
+
+    private onError(error) {
+        this.jhiAlertService.error(error.message, null, null);
     }
 
     setActive(collaborator, isActivated) {
@@ -59,20 +73,5 @@ collaborators: Collaborator[];
                     this.loadAll();
                 }
             });
-    }
-
-    ngOnDestroy() {
-        this.eventManager.destroy(this.eventSubscriber);
-    }
-
-    trackId(index: number, item: Collaborator) {
-        return item.id;
-    }
-    registerChangeInCollaborators() {
-        this.eventSubscriber = this.eventManager.subscribe('collaboratorListModification', (response) => this.loadAll());
-    }
-
-    private onError(error) {
-        this.jhiAlertService.error(error.message, null, null);
     }
 }

@@ -31,6 +31,10 @@ public class CollaboratorDTO implements Serializable {
 
     private String status;
 
+    private String university;
+
+    private String career;
+
     private Long idUser;
 
     private boolean activated = false;
@@ -117,6 +121,21 @@ public class CollaboratorDTO implements Serializable {
         this.status = status;
     }
 
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
+    }
+
+    public String getCareer() {
+        return career;
+    }
+
+    public void setCareer(String career) {
+        this.career = career;
+    }
 
     public Long getIdUser() {
         return idUser;
@@ -176,6 +195,8 @@ public class CollaboratorDTO implements Serializable {
             ", cellPhone='" + getCellPhone() + "'" +
             ", address='" + getAddress() + "'" +
             ", status='" + getStatus() + "'" +
+            ", university='" + getUniversity() + "'" +
+            ", career='" + getCareer() + "'" +
             "}";
     }
 }

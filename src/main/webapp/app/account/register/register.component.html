@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="alert alert-success" *ngIf="success">
-                <strong>Se guardaron los cambios!</strong> Por favor revise su correo para la verificación.
+                <strong>Se registró correctamente!</strong> Por favor espere mientras su cuenta es activada.
             </div>
 
             <div class="alert alert-danger" *ngIf="error">
@@ -30,7 +30,7 @@
                 <h2>Información personal</h2>
                 <br>
                 <div class="form-group">
-                    <label class="form-control-label" for="email">Número de cédula</label>
+                    <label class="form-control-label" for="email">Número de cédula (Sin guiones ni espacios)</label>
                     <input type="text" class="form-control" id="identification" name="identification" #identification="ngModel" placeholder=""
                            [(ngModel)]="registerAccount.identification" required>
                     <div *ngIf="identification.dirty && identification.invalid">
@@ -86,12 +86,18 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="email">Género</label>
-                    <input type="text" class="form-control" id="gender" name="gender" #gender="ngModel" placeholder=""
-                           [(ngModel)]="registerAccount.gender" required>
-                    <div *ngIf="gender.dirty && gender.invalid">
-                        <small class="form-text text-danger" *ngIf="gender.errors.required">
-                            Su género es requerido.
-                        </small>
+                    <br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" [(ngModel)]="registerAccount.gender" type="radio" name="inlineRadioOptions1" id="radio1" value="M">
+                        <label class="form-check-label" for="radio1">Masculino</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" [(ngModel)]="registerAccount.gender" type="radio" name="inlineRadioOptions2" id="radio2" value="F">
+                        <label class="form-check-label" for="radio2">Femenino</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" [(ngModel)]="registerAccount.gender" type="radio" name="inlineRadioOptions3" id="radio3" value="O">
+                        <label class="form-check-label" for="radio3">Otro</label>
                     </div>
                 </div>
 
@@ -116,6 +122,22 @@
                         </small>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="email">Universidad</label>
+                    <input type="text" class="form-control" id="university" name="university" #address="ngModel" placeholder=""
+                           [(ngModel)]="registerAccount.university" required>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="email">Carrera</label>
+                    <input type="text" class="form-control" id="career" name="career" #address="ngModel" placeholder=""
+                           [(ngModel)]="registerAccount.career" required>
+
+                </div>
+
+
             </div>
         </div>
         <div class="row justify-content-center">

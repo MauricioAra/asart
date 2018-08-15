@@ -83,6 +83,8 @@ public class AccountResource {
         collaboratorDTO.setCellPhone(managedUserVM.getCellPhone());
         collaboratorDTO.setAddress(managedUserVM.getAddress());
         collaboratorDTO.setStatus("1");
+        collaboratorDTO.setUniversity(managedUserVM.getUniversity());
+        collaboratorDTO.setCareer(managedUserVM.getCareer());
         collaboratorDTO = collaboratorService.save(collaboratorDTO);
 
         LinkAuthDTO linkAuthDTO = new LinkAuthDTO();

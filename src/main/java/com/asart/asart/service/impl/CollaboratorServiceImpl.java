@@ -65,7 +65,6 @@ public class CollaboratorServiceImpl implements CollaboratorService {
     @Transactional(readOnly = true)
     public List<CollaboratorDTO> findAll() {
         log.debug("Request to get all Collaborators");
-
         List<CollaboratorDTO> collaboratorDTOS = collaboratorRepository.findAll().stream()
             .map(collaboratorMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));

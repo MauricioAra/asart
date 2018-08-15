@@ -12,6 +12,8 @@ export class Collaborator implements BaseEntity {
         public cellPhone?: string,
         public address?: string,
         public status?: string,
+        public university?: string,
+        public career?: string,
         public projects?: BaseEntity[],
     ) {
     }

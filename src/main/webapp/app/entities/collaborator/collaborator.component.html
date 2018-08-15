@@ -1,12 +1,12 @@
 <div style="padding-top: 50px">
     <h2>
-        <span>Colaborador</span>
-        <button style="color: white;background-color: #fb9e39;" class="btn float-right jh-create-entity create-collaborator" [routerLink]="['/', { outlets: { popup: ['collaborator-new'] } }]">
-            <span class="fa fa-plus"></span>
-            <span >
-            Crear nuevo
-            </span>
-        </button>
+        <span>Colaboradores</span>
+        <!--<button style="color: white;background-color: #fb9e39;" class="btn float-right jh-create-entity create-collaborator" [routerLink]="['/', { outlets: { popup: ['collaborator-new'] } }]">-->
+            <!--<span class="fa fa-plus"></span>-->
+            <!--<span >-->
+            <!--Crear nuevo-->
+            <!--</span>-->
+        <!--</button>-->
     </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
@@ -16,17 +16,17 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span>ID</span></th>
-            <th><span>Identifación</span></th>
-            <th><span>Nombre</span></th>
-            <th><span>Primer apellido</span></th>
-            <th><span>Segundo apellido</span></th>
-            <th><span>Fecha naciemiento</span></th>
-            <th><span>Género</span></th>
-            <th><span>Teléfono</span></th>
-            <th><span>Dirección</span></th>
-            <th><span>Estado</span></th>
-            <th></th>
+                <th><span>ID</span></th>
+                <th><span>Identifación</span></th>
+                <th><span>Nombre</span></th>
+                <th><span>Primer apellido</span></th>
+                <th><span>Segundo apellido</span></th>
+                <th><span>Fecha naciemiento</span></th>
+                <th><span>Género</span></th>
+                <th><span>Teléfono</span></th>
+                <th><span>Dirección</span></th>
+                <th><span>Estado</span></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -41,7 +41,7 @@
                 <td>{{collaborator.cellPhone}}</td>
                 <td>{{collaborator.address}}</td>
                 <td>
-                    <button class="btn btn-danger btn-sm" (click)="setActive(collaborator, true)" *ngIf="!collaborator.activated">Deactivated</button>
+                    <button class="btn btn-danger btn-sm" (click)="setActive(collaborator, true)" *ngIf="!collaborator.activated">Deactivado</button>
                     <button class="btn btn-success btn-sm" (click)="setActive(collaborator, false)" *ngIf="collaborator.activated">Activado</button>
                 </td>
                 <td class="text-right">

@@ -68,6 +68,12 @@ public class CollaboratorResourceIntTest {
     private static final String DEFAULT_STATUS = "AAAAAAAAAA";
     private static final String UPDATED_STATUS = "BBBBBBBBBB";
 
+    private static final String DEFAULT_UNIVERSITY = "AAAAAAAAAA";
+    private static final String UPDATED_UNIVERSITY = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CAREER = "AAAAAAAAAA";
+    private static final String UPDATED_CAREER = "BBBBBBBBBB";
+
     @Autowired
     private CollaboratorRepository collaboratorRepository;
 
@@ -120,7 +126,9 @@ public class CollaboratorResourceIntTest {
             .gender(DEFAULT_GENDER)
             .cellPhone(DEFAULT_CELL_PHONE)
             .address(DEFAULT_ADDRESS)
-            .status(DEFAULT_STATUS);
+            .status(DEFAULT_STATUS)
+            .university(DEFAULT_UNIVERSITY)
+            .career(DEFAULT_CAREER);
         return collaborator;
     }
 
@@ -154,6 +162,8 @@ public class CollaboratorResourceIntTest {
         assertThat(testCollaborator.getCellPhone()).isEqualTo(DEFAULT_CELL_PHONE);
         assertThat(testCollaborator.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testCollaborator.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testCollaborator.getUniversity()).isEqualTo(DEFAULT_UNIVERSITY);
+        assertThat(testCollaborator.getCareer()).isEqualTo(DEFAULT_CAREER);
     }
 
     @Test
@@ -195,7 +205,9 @@ public class CollaboratorResourceIntTest {
             .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER.toString())))
             .andExpect(jsonPath("$.[*].cellPhone").value(hasItem(DEFAULT_CELL_PHONE.toString())))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())));
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
+            .andExpect(jsonPath("$.[*].university").value(hasItem(DEFAULT_UNIVERSITY.toString())))
+            .andExpect(jsonPath("$.[*].career").value(hasItem(DEFAULT_CAREER.toString())));
     }
 
     @Test
@@ -217,7 +229,9 @@ public class CollaboratorResourceIntTest {
             .andExpect(jsonPath("$.gender").value(DEFAULT_GENDER.toString()))
             .andExpect(jsonPath("$.cellPhone").value(DEFAULT_CELL_PHONE.toString()))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()));
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
+            .andExpect(jsonPath("$.university").value(DEFAULT_UNIVERSITY.toString()))
+            .andExpect(jsonPath("$.career").value(DEFAULT_CAREER.toString()));
     }
 
     @Test
@@ -248,7 +262,9 @@ public class CollaboratorResourceIntTest {
             .gender(UPDATED_GENDER)
             .cellPhone(UPDATED_CELL_PHONE)
             .address(UPDATED_ADDRESS)
-            .status(UPDATED_STATUS);
+            .status(UPDATED_STATUS)
+            .university(UPDATED_UNIVERSITY)
+            .career(UPDATED_CAREER);
         CollaboratorDTO collaboratorDTO = collaboratorMapper.toDto(updatedCollaborator);
 
         restCollaboratorMockMvc.perform(put("/api/collaborators")
@@ -269,6 +285,8 @@ public class CollaboratorResourceIntTest {
         assertThat(testCollaborator.getCellPhone()).isEqualTo(UPDATED_CELL_PHONE);
         assertThat(testCollaborator.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testCollaborator.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testCollaborator.getUniversity()).isEqualTo(UPDATED_UNIVERSITY);
+        assertThat(testCollaborator.getCareer()).isEqualTo(UPDATED_CAREER);
     }
 
     @Test

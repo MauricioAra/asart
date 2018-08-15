@@ -44,6 +44,14 @@
         {
             "fieldName": "status",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "university",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "career",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20180511034020",

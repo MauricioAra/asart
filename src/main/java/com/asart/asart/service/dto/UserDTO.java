@@ -65,6 +65,10 @@ public class UserDTO {
 
     private String name;
 
+    private String university;
+
+    private String career;
+
 
     public UserDTO() {
         // Empty constructor needed for Jackson.
@@ -238,6 +242,22 @@ public class UserDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
+    }
+
+    public String getCareer() {
+        return career;
+    }
+
+    public void setCareer(String career) {
+        this.career = career;
     }
 
     @Override
