@@ -1,52 +1,79 @@
 
-<div *ngIf="logWork">
+<div *ngIf="logWork" style="margin-top: 50px">
     <h2><span>Log Work</span> {{logWork.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span>Name</span></dt>
-        <dd>
-            <span>{{logWork.name}}</span>
-        </dd>
-        <dt><span>Description</span></dt>
-        <dd>
-            <span>{{logWork.description}}</span>
-        </dd>
-        <dt><span>Hour</span></dt>
-        <dd>
-            <span>{{logWork.hour}}</span>
-        </dd>
-        <dt><span>Minute</span></dt>
-        <dd>
-            <span>{{logWork.minute}}</span>
-        </dd>
-        <dt><span>Date</span></dt>
-        <dd>
-            <span>{{logWork.date}}</span>
-        </dd>
-        <dt><span>Status</span></dt>
-        <dd>
-            <span>{{logWork.status}}</span>
-        </dd>
-        <dt><span>Project</span></dt>
-        <dd>
-            <div *ngIf="logWork.projectId">
-                <a [routerLink]="['/project', logWork.projectId]">{{logWork.projectName}}</a>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3" style="background-color:#fb9e39;color: white">
+                <div style="letter-spacing: 1px">
+                    <dl class="row-md jh-entity-details">
+                        <div style="text-align: center; margin-top: 10px">
+                            <dt><span>Date</span></dt>
+                            <dd>
+                                <span>{{logWork.date}}</span>
+                            </dd>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6" style="text-align: center">
+                                    <dd>
+                                        <span style="font-size: 40px">{{logWork.hour}}</span>
+                                    </dd>
+                                    <dt><span>Hour</span></dt>
+                                </div>
+                                <div class="col-md-6" style="text-align: center">
+                                    <dd>
+                                        <span style="font-size: 40px">{{logWork.minute}}</span>
+                                    </dd>
+                                    <dt><span>Minute</span></dt>
+                                </div>
+                            </div>
+                        </div>
+                    </dl>
+                </div>
             </div>
-        </dd>
-    </dl>
+            <div class="col-md-5">
+                <dl class="row-md jh-entity-details">
+                    <dt><span>Name</span></dt>
+                    <dd>
+                        <span>{{logWork.name}}</span>
+                    </dd>
+                    <dt><span>Description</span></dt>
+                    <dd>
+                        <span>{{logWork.description}}</span>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <dl class="row-md jh-entity-details">
+                    <dt><span>Status</span></dt>
+                    <dd>
+                        <span>{{logWork.status}}</span>
+                    </dd>
+                    <dt><span>Project</span></dt>
+                    <dd>
+                        <div *ngIf="logWork.projectId">
+                            <a [routerLink]="['/project', logWork.projectId]">{{logWork.projectName}}</a>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div style="padding-top: 20px">
+        <button type="submit"
+                (click)="previousState()"
+                class="btn btn-info">
+            <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+        </button>
 
-    <button type="submit"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
-    </button>
-
-    <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'log-work/'+ logWork.id + '/edit'} }]"
-            replaceUrl="true"
-            queryParamsHandling="merge"
-            class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
-    </button>
+        <button type="button"
+                [routerLink]="['/', { outlets: { popup: 'log-work/'+ logWork.id + '/edit'} }]"
+                replaceUrl="true"
+                queryParamsHandling="merge"
+                class="btn btn-primary">
+            <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+        </button>
+    </div>
 </div>

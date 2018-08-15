@@ -12,7 +12,9 @@ entity Collaborator{
     gender String,
     cellPhone String,
     address String,
-    status String
+    status String,
+    university String,
+    career String
 }
 
 entity Project{

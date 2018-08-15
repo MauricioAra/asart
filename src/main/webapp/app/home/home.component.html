@@ -6,10 +6,17 @@
             </div>
 
             <div *jhiHasAnyAuthority="'ROLE_USER'">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 style="text-align: center">Proyectos actuales</h3>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div *ngFor="let project of projects" class="col-md-3">
-                        <div class="card jh-card">
-                            <p>{{project.name}}</p>
+                        <div class="card jh-card" style="border: 1px solid #e1ded7; padding-top: 40px">
+                            <p style="text-transform: capitalize; text-align: center; margin-bottom: 20px">{{project.name}}</p>
                             <button [routerLink]="['../project', project.id ]" class="btn btn-primary">Ir al proyecto</button>
                         </div>
                     </div>
@@ -28,7 +35,7 @@
                 <div>
                     <div>
                         <div cdiss="alert alert-danger" *ngIf="authenticationError">
-                            <strong>¡Falló el inicio de sesión!</strong> Por favor revise sys credenciales.
+                            <strong>¡Falló el inicio de sesión!</strong> Por favor revise sus credenciales.
                         </div>
                     </div>
                     <div>
@@ -58,7 +65,7 @@
                         <!--</div>-->
                         <div style="text-align: center; font-size: 13px">
                             <span>¿No tienes una cuenta?</span>
-                            <a class="alert-link" (click)="register()">Registrate ahora mismo</a>
+                            <a class="alert-link" [routerLink]="['../register']">Registrate ahora mismo</a>
                         </div>
                     </div>
                 </div>

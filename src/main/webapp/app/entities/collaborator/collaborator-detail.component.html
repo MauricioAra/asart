@@ -1,46 +1,58 @@
 
-<div *ngIf="collaborator">
+<div *ngIf="collaborator" style="margin-top: 50px">
     <h2><span>Collaborator</span> {{collaborator.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span>Identification</span></dt>
-        <dd>
-            <span>{{collaborator.identification}}</span>
-        </dd>
-        <dt><span>Name</span></dt>
-        <dd>
-            <span>{{collaborator.name}}</span>
-        </dd>
-        <dt><span>First Name</span></dt>
-        <dd>
-            <span>{{collaborator.firstName}}</span>
-        </dd>
-        <dt><span>Last Name</span></dt>
-        <dd>
-            <span>{{collaborator.lastName}}</span>
-        </dd>
-        <dt><span>Birth Date</span></dt>
-        <dd>
-            <span>{{collaborator.birthDate}}</span>
-        </dd>
-        <dt><span>Gender</span></dt>
-        <dd>
-            <span>{{collaborator.gender}}</span>
-        </dd>
-        <dt><span>Cell Phone</span></dt>
-        <dd>
-            <span>{{collaborator.cellPhone}}</span>
-        </dd>
-        <dt><span>Address</span></dt>
-        <dd>
-            <span>{{collaborator.address}}</span>
-        </dd>
-        <dt><span>Status</span></dt>
-        <dd>
-            <span>{{collaborator.status}}</span>
-        </dd>
-    </dl>
+    <div class="container-fluid">
+        <div class="row">
+           <div class="col-md-2">
+               <dl class="row-md jh-entity-details">
+                   <dt><span>Name</span></dt>
+                   <dd>
+                       <span>{{collaborator.name}}</span>
+                   </dd>
+                   <dt><span>First Name</span></dt>
+                   <dd>
+                       <span>{{collaborator.firstName}}</span>
+                   </dd>
+                   <dt><span>Last Name</span></dt>
+                   <dd>
+                       <span>{{collaborator.lastName}}</span>
+                   </dd>
+               </dl>
+           </div>
+            <div class="col-md-2">
+                <dt><span>Identification</span></dt>
+                <dd>
+                    <span>{{collaborator.identification}}</span>
+                </dd>
+                <dt><span>Birth Date</span></dt>
+                <dd>
+                    <span>{{collaborator.birthDate}}</span>
+                </dd>
+                <dt><span>Gender</span></dt>
+                <dd>
+                    <span>{{collaborator.gender}}</span>
+                </dd>
+            </div>
+            <div class="col-md-2">
+                <dl class="row-md jh-entity-details">
+                    <dt><span>Cell Phone</span></dt>
+                    <dd>
+                        <span>{{collaborator.cellPhone}}</span>
+                    </dd>
+                    <dt><span>Address</span></dt>
+                    <dd>
+                        <span>{{collaborator.address}}</span>
+                    </dd>
+                    <dt><span>Status</span></dt>
+                    <dd>
+                        <span>{{collaborator.status}}</span>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
 
     <button type="submit"
             (click)="previousState()"

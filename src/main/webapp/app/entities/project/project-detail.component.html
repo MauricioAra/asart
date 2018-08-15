@@ -1,56 +1,79 @@
 
-<div *ngIf="project">
-    <h2><span>Project</span> {{project.id}}</h2>
+<div *ngIf="project" style="margin-top: 50px">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <button type="submit"
+                        (click)="previousState()"
+                        class="btn btn-info">
+                    <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+                </button>
+
+                <button type="button"
+                        [routerLink]="['/', { outlets: { popup: 'project/'+ project.id + '/edit'} }]"
+                        replaceUrl="true"
+                        queryParamsHandling="merge"
+                        class="btn btn-primary">
+                    <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+                </button>
+            </div>
+            <div class="col-md-4">
+                <h2 style="text-align: center"><span>Project</span> {{project.id}}</h2>
+            </div>
+        </div>
+    </div>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span>Name</span></dt>
-        <dd>
-            <span>{{project.name}}</span>
-        </dd>
-        <dt><span>Description</span></dt>
-        <dd>
-            <span>{{project.description}}</span>
-        </dd>
-        <dt><span>Total Hours</span></dt>
-        <dd>
-            <span>{{project.totalHours}}</span>
-        </dd>
-        <dt><span>Start Date</span></dt>
-        <dd>
-            <span>{{project.startDate}}</span>
-        </dd>
-        <dt><span>End Date</span></dt>
-        <dd>
-            <span>{{project.endDate}}</span>
-        </dd>
-        <dt><span>Status</span></dt>
-        <dd>
-            <span>{{project.status}}</span>
-        </dd>
-        <dt><span>Collaborator</span></dt>
-        <dd>
-            <div *ngIf="project.collaboratorId">
-                <a [routerLink]="['/collaborator', project.collaboratorId]">{{project.collaboratorName}}</a>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div style="background-color:#479dcf;color:white">
+                    <div style="padding-top: 20px; padding-bottom: 10px">
+                        <dl style="text-align: center!important;">
+                            <dt><span style="letter-spacing: 1px">Total Hours</span></dt>
+                            <dd>
+                                <span style="font-size: 40px;">{{project.totalHours}}</span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
             </div>
-        </dd>
-    </dl>
+            <div class="col-md-2">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{project.name}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{project.description}}</span>
+                </dd>
+                <dt><span>Collaborator</span></dt>
+                <dd>
+                    <div *ngIf="project.collaboratorId">
+                        <a [routerLink]="['/collaborator', project.collaboratorId]">{{project.collaboratorName}}</a>
+                    </div>
+                </dd>
+            </div>
+            <div class="col-md-2">
+                <dl class="row-md jh-entity-details">
+                    <dt><span>Start Date</span></dt>
+                    <dd>
+                        <span>{{project.startDate}}</span>
+                    </dd>
+                    <dt><span>End Date</span></dt>
+                    <dd>
+                        <span>{{project.endDate}}</span>
+                    </dd>
+                    <dt><span>Status</span></dt>
+                    <dd>
+                        <span>{{project.status}}</span>
+                    </dd>
+                </dl>
+            </div>
 
-    <button type="submit"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
-    </button>
-
-    <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'project/'+ project.id + '/edit'} }]"
-            replaceUrl="true"
-            queryParamsHandling="merge"
-            class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
-    </button>
-
-    <button class="btn btn-primary float-right jh-create-entity create-log-work" [routerLink]="['/', { outlets: { popup: 'log-work-new' } }]">
+        </div>
+    </div>
+    <button class="btn float-right jh-create-entity create-log-work" [routerLink]="['/', { outlets: { popup: 'log-work-new' } }]" style="background-color: #fb9e39; color: white">
         <span class="fa fa-plus"></span>
         <span>
             Create new Log Work
